@@ -28,7 +28,7 @@ def log(content):
 # 获取今日校园api
 def getCpdailyApis(user, debug=False):
     apis = {}
-    schools = requests.get(url='https://www.cpdaily.com/v6/config/guest/tenant/list', verify=not debug).json()['data']
+    schools = requests.get(url='https://mobile.campushoy.com/v6/config/guest/tenant/list', verify=not debug).json()['data']
     flag = True
     for one in schools:
         if one['name'] == user['school']:
@@ -40,7 +40,7 @@ def getCpdailyApis(user, debug=False):
                 'ids': one['id']
             }
             apis['tenantId'] = one['id']
-            res = requests.get(url='https://www.cpdaily.com/v6/config/guest/tenant/info', params=params,
+            res = requests.get(url='https://mobile.campushoy.com/v6/config/guest/tenant/info', params=params,
                                verify=not debug)
             data = res.json()['data'][0]
             joinType = data['joinType']
